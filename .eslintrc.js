@@ -20,7 +20,9 @@ module.exports = {
     'no-promise-executor-return': 'off',
     'import/no-extraneous-dependencies': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/naming-convention': 'warn',
     'no-param-reassign': 'off',
-    'consistent-return': 'off'
+    'consistent-return': 'off',
+    'object-curly-newline': 'off'
   }
 }

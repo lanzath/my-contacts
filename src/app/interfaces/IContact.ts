@@ -3,5 +3,5 @@ export default interface Contact {
   name: string,
   email: string,
   age?: number,
-  category_id: string
+  categoryId: string
 }

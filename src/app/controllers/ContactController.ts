@@ -21,10 +21,18 @@ class ContactController {
     res.status(200).json(contact);
   }
 
-  async store(req: Request, res: Response): Promise<void> {
+  async store(req: Request, res: Response): Promise<Response<any, Record<string, any>>
+  | IContact | undefined> {
+    const { name, email } = req.body;
+
+    if (!name) return res.status(400).send({ error: 'Nome obrigatório' });
+
+    const contactExists = await ContactRepository.findByEmail(email);
+    if (contactExists) return res.status(400).send({ error: 'Email já cadastrado' });
+
     await ContactRepository.store(req.body);
 
-    res.status(201).send(req.body);
+    res.sendStatus(201);
   }
 
   update(): void {

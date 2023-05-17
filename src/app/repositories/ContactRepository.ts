@@ -8,7 +8,7 @@ let contacts: IContact[] = [
     name: 'Lanza',
     email: 'lanzathm@gmail.com',
     age: 30,
-    category_id: v4(),
+    categoryId: v4(),
   },
 ];
 
@@ -40,6 +40,10 @@ class ContactRepository {
       contacts = contacts.filter((contact) => contact.id !== id);
       resolve();
     });
+  }
+
+  findByEmail(email: string): Promise<boolean> {
+    return new Promise((resolve) => resolve(!!contacts.find((contact) => contact.email === email)));
   }
 }
 
